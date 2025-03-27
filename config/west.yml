@@ -61,4 +61,4 @@ manifest:
           - tinycrypt
 
   self:
-    path: config
+    path: configp
