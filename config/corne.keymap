@@ -100,7 +100,7 @@ ZMK_HOLD_TAP(mt_end,  bindings = <&masked_end>, <&kp>; MT_CORE)
 #define NAV_RIGHT &mt_end 0    RIGHT   // tap: right | long-tap: end       of line
 #define NAV_UP    &mt PG_UP UP         // tap: up    | long-tap: page up
 #define NAV_DOWN  &mt PG_DN DOWN       // tap: down  | long-tap: page down
-#define NAV_BSPC  &mt LC(BSPC) BSPC    // tap: bspc  | long-tap: delete word backward
+#define NAV_BSPC  &mt LA(BSPC) BSPC    // tap: bspc  | long-tap: delete word backward
 #define NAV_DEL   &mt LC(DEL)  DEL     // tap: del   | long-tap: delete word forward
 
 // mask CTRL when holding left/right to avoid accidental jumps to beginning/end of document
@@ -154,7 +154,7 @@ ZMK_TRI_STATE(smart_hand,
 // Alt+Tab app_switch, requires PR #1366
 ZMK_TRI_STATE(app_switch,
     bindings = <&kt LGUI>, <&kp TAB>, <&kt LGUI>;
-    ignored-key-positions = <LM5 LT2 RT2 RM1 RM2 RM3>;
+    ignored-key-positions = <LM5 LT2 RT2 RM1 RM2 RM3 RH0>;
 )
 
 // Sticky layer + sticky shift (workaround for issue #1421)
@@ -287,7 +287,7 @@ ZMK_LAYER(base,
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
           &kp LCTRL     &kp Z         &kp X         &kp C         &kp D         &kp V             &kp K         &kp H         &comma_morph  &dot_morph    &qexcl        &kp LALT
      // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                                    &smart_mouse  SPACE_NAV     &lt FN RET        &smart_shft   &bs_del       SMART_NUM
+                                                    &kp TAB       SPACE_NAV     &lt FN RET        &smart_shft   &bs_del       SMART_NUM
      //                                           ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
 ) 
 
