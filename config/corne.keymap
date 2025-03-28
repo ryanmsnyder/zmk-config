@@ -38,7 +38,7 @@
 #define NAV 1
 #define NUM 2
 #define FN 3
-#define HND 4
+#define LHAND 4
 #define NV2 5
 #define SYS 6
 #define UC 7
@@ -144,9 +144,9 @@ ZMK_TRI_STATE(smart_mouse,
 )
 
 ZMK_TRI_STATE(smart_hand,
-    bindings = <&tog HND>, <&none>, <&tog HND>;
+    bindings = <&tog LHAND>, <&none>, <&tog LHAND>;
     ignored-key-positions = <LEFT_KEYS>;
-    ignored-layers = <HND>;
+    ignored-layers = <LHAND>;
 )
 
 /* Custom behaviors */
@@ -270,7 +270,7 @@ ZMK_HOLD_TAP(tog_tap,
 #define DSK_MGR     &kp LA(GRAVE)            // desktop manager
 #define VOL_DOWN    &hmr LCTRL C_VOL_DN
 #define CA_DEL      &mt LC(LA(DEL)) ESC      //hold: control alt delete | tap: escape
-#define HND_LYR     &tog_tap HND meh         //hold: HAND layer         | tap: meh
+#define LHAND_LYR   &tog_tap LHAND meh         //hold: HAND layer         | tap: meh
 #define SPACE_NAV   &lt_spc NAV SPACE        //hold: NAV layer          | tap: space
 
 ZMK_CONDITIONAL_LAYER(system, FN NUM, SYS)  // FN + NUM --> SYS
@@ -282,7 +282,7 @@ ZMK_LAYER(base,
      // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
           CA_DEL        &kp Q         &kp W         &kp F         &kp P         &kp B             &kp J         &kp L         &kp U         &kp Y         &kp SEMI      &kp LG(L)
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-          HND_LYR       &hml LGUI A   &hml LALT R   &hml LCTRL S  &hml LSHFT T  &kp G             &kp M         &hmr RSHFT N  &hmr LCTRL E  &hmr LALT I   &hmr LGUI O   &kp SQT
+          LHAND_LYR     &hml LGUI A   &hml LALT R   &hml LCTRL S  &hml LSHFT T  &kp G             &kp M         &hmr RSHFT N  &hmr LCTRL E  &hmr LALT I   &hmr LGUI O   &kp SQT
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
           &kp LCTRL     &kp Z         &kp X         &kp C         &kp D         &kp V             &kp K         &kp H         &comma_morph  &dot_morph    &qexcl        &kp LALT
      // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
@@ -331,7 +331,7 @@ ZMK_LAYER(hand,
      // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
           ___           ___           NAV_BSPC      NAV_UP        NAV_DEL       ___               ___           ___           ___           ___           ___           ___
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-          &tog HND      ___           NAV_LEFT      NAV_DOWN      NAV_RIGHT     ___               ___           ___           ___           ___           ___           ___
+          &tog LHAND    ___           NAV_LEFT      NAV_DOWN      NAV_RIGHT     ___               ___           ___           ___           ___           ___           ___
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
           ___           ___           ___           ___           ___           ___               ___           ___           ___           ___           ___           ___
      // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
