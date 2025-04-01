@@ -45,6 +45,7 @@
 #define MSE 8
 
 #include "combos.dtsi"  // requires layer aliases
+// #include "leader.dtsi"
 #include "mouse.dtsi"
 
 /* Global settings */
@@ -151,9 +152,15 @@ ZMK_TRI_STATE(smart_hand,
 
 /* Custom behaviors */
 
-// Alt+Tab app_switch, requires PR #1366
-ZMK_TRI_STATE(app_switch,
+// CMD+Tab app_switch, requires PR #1366
+ZMK_TRI_STATE(app_cycle,
     bindings = <&kt LGUI>, <&kp TAB>, <&kt LGUI>;
+    ignored-key-positions = <LM5 LT2 RT2 RM1 RM2 RM3 RH0>;
+)
+
+// CMD+`, cycles through window of same app on Mac 
+ZMK_TRI_STATE(win_cycle,
+    bindings = <&kt LGUI>, <&kp GRAVE>, <&kt LGUI>;
     ignored-key-positions = <LM5 LT2 RT2 RM1 RM2 RM3 RH0>;
 )
 
@@ -262,7 +269,8 @@ ZMK_HOLD_TAP(tog_tap,
 )
 
 // misc aliases
-#define meh         LC(LA(LSHFT))            // Control Alt Shift
+#define SCRNSHOT    &kp LG(LS(N2))            // desktop manager
+#define MEH         LC(LA(LSHFT))            // Control Alt Shift
 #define CANCEL      &kp K_CANCEL             // cancel caps-word, num-word and smart-mouse
 #define DSK_PREV    &hmr RSHFT LG(LC(LEFT))  // previous desktop
 #define DSK_NEXT    &hmr LALT LG(LC(RIGHT))  // next     desktop
@@ -294,11 +302,11 @@ ZMK_LAYER(base,
 
 ZMK_LAYER(nav,
      // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-          ___           ___           ___           &kp LC(F)     &app_switch   &kp C_BRI_UP      &kp LC(HOME)  NAV_BSPC      NAV_UP        NAV_DEL       ___           ___
+          ___           ___           ___           &win_cycle    &app_cycle    ___               &kp LC(HOME)  NAV_BSPC      NAV_UP        NAV_DEL       ___           ___
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-          &kp ESC       &sk LGUI      &sk LALT      &sk LSHFT     &sk LCTRL     &kp C_BRI_DN      &kp LC(END)   NAV_LEFT      NAV_DOWN      NAV_RIGHT     &kp RET       ___
+          &kp ESC       &sk LGUI      &sk LALT      &sk LSHFT     &sk LCTRL     ___               &kp LC(END)   NAV_LEFT      NAV_DOWN      NAV_RIGHT     &kp RET       ___
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-          ___           ___           ___           &kp PSCRN     ___           ___               &kp INS       &kp TAB       &kp LT        &kp GT        ___           ___
+          ___           ___           ___           ___           ___           ___               ___           &kp TAB       &kp LT        &kp GT        ___           ___
      // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                                     ___           ___           ___               ___           ___           CANCEL
      //                                           ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
@@ -318,9 +326,9 @@ ZMK_LAYER(num,
 
 ZMK_LAYER(func,
      // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-          ___           &kp F12       &kp F7        &kp F8        &kp F9        ___               ___           &kp C_PREV    &kp C_VOL_UP  &kp C_NEXT    ___           ___
+          ___           &kp F12       &kp F7        &kp F8        &kp F9        &kp C_BRI_UP      SCRNSHOT      &kp C_PREV    &kp C_VOL_UP  &kp C_NEXT    ___           ___
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-          ___           &hml LGUI F11 &hml LALT F4  &hml LSHFT F5 &hml LCTRL F6 ___               ___           DSK_PREV      VOL_DOWN      DSK_NEXT      ___           ___
+          ___           &hml LGUI F11 &hml LALT F4  &hml LSHFT F5 &hml LCTRL F6 &kp C_BRI_DN      ___           DSK_PREV      VOL_DOWN      DSK_NEXT      ___           ___
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
           ___           &kp F10       &kp F1        &kp F2        &kp F3        ___               PIN_APP       PIN_WIN       DSK_MGR       ___           ___           ___
      // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
@@ -342,7 +350,7 @@ ZMK_LAYER(hand,
 
 ZMK_LAYER(nav2,
      // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-          ___           ___           ___           &kp LS(TAB)   &app_switch      ___               ___           ___           ___           ___           ___           ___
+          ___           ___           ___           &win_cycle    &app_cycle    ___               ___           ___           ___           ___           ___           ___
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
           ___           &sk LGUI      &sk LALT      &sk LSHFT     &sk LCTRL     ___               ___           ___           ___           ___           ___           ___
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
