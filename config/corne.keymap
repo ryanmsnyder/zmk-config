@@ -243,20 +243,14 @@ ZMK_MOD_MORPH(rpar_gt,
 // tap: copy | double-tap: cut
 ZMK_TAP_DANCE(copy_cut,
     tapping-term-ms = <200>;
-    bindings = <&kp LC(INS)>, <&kp LC(X)>;
+    bindings = <&kp LG(C)>, <&kp LG(X)>;
 )
 
-// tap: cut | shft + tap: redo
+// tap: undo | shft + tap: redo
 ZMK_MOD_MORPH(undo_redo,
-    bindings = <&kp LC(Z)>, <&kp LS(LC(Z))>;
+    bindings = <&kp LG(Z)>, <&kp LS(LG(Z))>;
     mods = <(MOD_LSFT|MOD_RSFT)>;
-)
 
-// Windows sleep key
-ZMK_MACRO(win_sleep,
-    wait-ms = <500>;
-    tap-ms = <50>;
-    bindings = <&kp LG(X) &kp U &kp S>;
 )
 
 // tap: escape | hold: toggle layer
@@ -268,30 +262,36 @@ ZMK_HOLD_TAP(tog_tap,
     bindings = <&tog>, <&kp>;
 )
 
-// misc aliases
-#define SCRNSHOT    &kp LG(LS(N2))            // desktop manager
-#define MEH         LC(LA(LSHFT))            // Control Alt Shift
-#define CANCEL      &kp K_CANCEL             // cancel caps-word, num-word and smart-mouse
-#define DSK_PREV    &hmr RSHFT LG(LC(LEFT))  // previous desktop
-#define DSK_NEXT    &hmr LALT LG(LC(RIGHT))  // next     desktop
-#define PIN_WIN     &kp LG(LC(LS(Q)))        // pin window across desktops
-#define PIN_APP     &kp LG(LC(LS(A)))        // pin application across desktops
-#define DSK_MGR     &kp LA(GRAVE)            // desktop manager
+ZMK_HOLD_TAP(whisper,
+    flavor = "balanced";
+    tapping-term-ms = <200>;
+    quick-tap-ms = <QUICK_TAP_MS>;
+    bindings = <&kp>, <&kp>;
+)
+
+#define MEH         LC(LA(LS))
+#define HYPER       LC(LA(LG(LS)))
+#define WHISPER     &whisper LG(LC(LA(N1))) LG(LC(LA(N2)))
+#define SCRNSHOT    &kp LG(LS(N2))
+#define CANCEL      &kp K_CANCEL
+#define DSK_PREV    &kp LC(LEFT)
+#define DSK_NEXT    &kp LC(RIGHT)
+#define PIN_WIN     &kp LG(LC(LS(Q)))
+#define PIN_APP     &kp LG(LC(LS(A)))
+#define DSK_MGR     &kp LC(UP)
 #define VOL_DOWN    &hmr LCTRL C_VOL_DN
-#define CA_DEL      &mt LC(LA(DEL)) ESC      //hold: control alt delete | tap: escape
-#define HND_LYR     &tog_tap HND ESC         //hold: HAND layer         | tap: escape
-#define SPACE_NAV   &lt_spc NAV SPACE        //hold: NAV layer          | tap: space
+#define HND_LYR     &tog_tap HND ESC
+#define SPACE_NAV   &lt_spc NAV SPACE
 
-ZMK_CONDITIONAL_LAYER(system, FN NUM, SYS)  // FN + NUM --> SYS
-
+ZMK_CONDITIONAL_LAYER(system, FN NUM, SYS)
 
 /* keymap */
 
 ZMK_LAYER(base,
      // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-          CA_DEL        &kp Q         &kp W         &kp F         &kp P         &kp B             &kp J         &kp L         &kp U         &kp Y         &kp SEMI      &kp LG(L)
+          WHISPER       &kp Q         &kp W         &kp F         &kp P         &kp B             &kp J         &kp L         &kp U         &kp Y         &kp SEMI      &kp LG(L)
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-          HND_LYR       &hml LGUI A   &hml LALT R   &hml LSHFT S  &hml LCTRL T  &kp G             &kp M         &hmr RCTRL N  &hmr LSHFT E  &hmr LALT I   &hmr LGUI O   &kp SQT
+          HND_LYR       &hml LGUI A   &hml LALT R   &hml LSHFT S  &hml LCTRL T  &kp G             &kp M         &hmr RCTRL N  &hmr RSHFT E  &hmr RALT I   &hmr RGUI O   &kp SQT
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
           &kp LCTRL     &kp Z         &kp X         &kp C         &kp D         &kp V             &kp K         &kp H         &comma_morph  &dot_morph    &qexcl        &kp LALT
      // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
