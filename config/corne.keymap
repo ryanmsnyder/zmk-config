@@ -262,16 +262,9 @@ ZMK_HOLD_TAP(tog_tap,
     bindings = <&tog>, <&kp>;
 )
 
-ZMK_HOLD_TAP(whisper,
-    flavor = "balanced";
-    tapping-term-ms = <200>;
-    quick-tap-ms = <QUICK_TAP_MS>;
-    bindings = <&kp>, <&kp>;
-)
-
 #define MEH         LC(LA(LS))
 #define HYPER       LC(LA(LG(LS)))
-#define WHISPER     &whisper LG(LC(LA(N1))) LG(LC(LA(N2)))
+#define WHISPER     &kp LG(LC(LA(LS(W))))
 #define SCRNSHOT    &kp LG(LS(N2))
 #define CANCEL      &kp K_CANCEL
 #define DSK_PREV    &kp LC(LEFT)
