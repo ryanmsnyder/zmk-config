@@ -183,6 +183,7 @@ ZMK_MOD_MORPH(comma_morph,
     mods = <(MOD_LSFT|MOD_RSFT)>;
     bindings = <&kp COMMA>, <&comma_inner_morph>;
 )
+
 ZMK_MOD_MORPH(comma_inner_morph,
     bindings = <&kp SEMICOLON>, <&kp LESS_THAN>;
     mods = <(MOD_LCTL|MOD_RCTL)>;
@@ -193,6 +194,7 @@ ZMK_MOD_MORPH(dot_morph,
     bindings = <&kp DOT>, <&dot_inner_morph>;
     mods = <(MOD_LSFT|MOD_RSFT)>;
 )
+
 ZMK_MOD_MORPH(dot_inner_morph,
     bindings = <&kp COLON>, <&kp GREATER_THAN>;
     mods = <(MOD_LCTL|MOD_RCTL)>;
@@ -211,10 +213,12 @@ ZMK_HOLD_TAP(lt_spc,
     quick-tap-ms = <QUICK_TAP_MS>;
     bindings = <&mo>, <&kp>;
 )
+
 ZMK_MOD_MORPH(spc_morph,
     bindings = <&kp SPACE>, <&dot_spc>;
     mods = <(MOD_LSFT|MOD_RSFT)>;
 )
+
 ZMK_MACRO(dot_spc,
     wait-ms = <0>;
     tap-ms = <5>;
@@ -300,7 +304,7 @@ ZMK_LAYER(num,
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
           ___           ___           ___           ___           ___           ___               ___           &kp N1        &kp N2        &kp N3        &dot_morph    ___
      // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                                    ___           &mo NAV       ___               &kp N0        ___           ___
+                                                    ___           SPACE_NAV     ___               &kp N0        ___           ___
      //                                           ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
 )
 
