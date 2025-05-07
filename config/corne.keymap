@@ -270,6 +270,7 @@ ZMK_HOLD_TAP(tog_tap,
 #define HYPER       LC(LA(LG(LS)))
 #define WHISPER     &kp LG(LC(LA(LS(W))))
 #define SCRNSHOT    &kp LG(LS(N2))
+#define OCR_TEXT    &kp LG(LC(LA(O))) // Shottr capture text
 #define CANCEL      &kp K_CANCEL
 #define DSK_PREV    &kp LC(LEFT)
 #define DSK_NEXT    &kp LC(RIGHT)
@@ -325,7 +326,7 @@ ZMK_LAYER(func,
      // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
           ___           &kp F12       &kp F7        &kp F8        &kp F9        SCRNSHOT          &kp C_BRI_UP  &kp C_PREV    &kp C_VOL_UP  &kp C_NEXT    ___           ___
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-          ___           &hml LGUI F11 &hml LALT F4  &hml LSHFT F5 &hml LCTRL F6 ___               &kp C_BRI_DN  DSK_PREV      VOL_DOWN      DSK_NEXT      ___           ___
+          ___           &hml LGUI F11 &hml LALT F4  &hml LSHFT F5 &hml LCTRL F6 OCR_TEXT          &kp C_BRI_DN  DSK_PREV      VOL_DOWN      DSK_NEXT      ___           ___
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
           ___           &kp F10       &kp F1        &kp F2        &kp F3        ___               PIN_APP       PIN_WIN       DSK_MGR       ___           ___           ___
      // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
