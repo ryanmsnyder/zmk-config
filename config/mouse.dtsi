@@ -9,7 +9,7 @@
 // Based on @caksoylar's config, defaults in comments
 &mmv {
   acceleration-exponent = <1>;          // 1
-  time-to-max-speed-ms = <500>;         // 300
+  time-to-max-speed-ms = <300>;         // 300
   delay-ms = <0>;                       // 0
 };
 
@@ -22,7 +22,7 @@
 &mmv_input_listener {
   warp {
     layers = <NAV>;
-    input-processors = <&zip_xy_scaler 3 1>;
+    input-processors = <&zip_xy_scaler 2 1>;
   };
   precision {
     layers = <FN>;

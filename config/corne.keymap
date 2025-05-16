@@ -140,8 +140,8 @@ ZMK_TAP_DANCE(num_dance,
 // smart-mouse, requires PR #1366
 ZMK_TRI_STATE(smart_mouse,
     bindings = <&tog MSE>, <&none>, <&tog MSE>;
-    ignored-key-positions = <LT1 LT3 RT1 RT2 RT3 RM1 RM2 RM3 RB1 RB3 RH0 RH1 RH2>;
-    ignored-layers = <MSE>;
+    ignored-key-positions = <LT1 LT3 LH0 LH1 RT1 RT2 RT3 RM1 RM2 RM3 RB1 RB3 RH0 RH1 RH2>;
+    ignored-layers = <MSE NAV FN>;
 )
 
 ZMK_TRI_STATE(smart_hand,
@@ -324,9 +324,9 @@ ZMK_LAYER(nav,
 
 ZMK_LAYER(func,
      // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-          ___           &kp F12       &kp F7        &kp F8        &kp F9        SCRNSHOT          &kp C_BRI_UP  &kp C_PREV    &kp C_VOL_UP  &kp C_NEXT    ___           ___
+          ___           &kp F12       &kp F7        &kp F8        &kp F9        OCR_TEXT          &kp C_BRI_UP  &kp C_PREV    &kp C_VOL_UP  &kp C_NEXT    ___           ___
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-          ___           &hml LGUI F11 &hml LALT F4  &hml LSHFT F5 &hml LCTRL F6 OCR_TEXT          &kp C_BRI_DN  DSK_PREV      VOL_DOWN      DSK_NEXT      ___           ___
+          ___           &hml LGUI F11 &hml LALT F4  &hml LSHFT F5 &hml LCTRL F6 SCRNSHOT          &kp C_BRI_DN  DSK_PREV      VOL_DOWN      DSK_NEXT      ___           ___
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
           ___           &kp F10       &kp F1        &kp F2        &kp F3        ___               PIN_APP       PIN_WIN       DSK_MGR       ___           ___           ___
      // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
