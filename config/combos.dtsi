@@ -74,4 +74,4 @@ ZMK_COMBO(fslh,       &kp FSLH,        RM2 RB2,       BSE NAV NUM,         COMBO
 ZMK_COMBO(pipe,       &kp PIPE,        RM3 RB3,       BSE NAV NUM,         COMBO_TERM_SLOW)
 
 /* Other combos */
-ZMK_COMBO(raycast,     &kp LG(SPACE),   LH0 RH0,       ALL,                 COMBO_TERM_SLOW)
+ZMK_COMBO(raycast,     &kp LG(SPACE),   LH0 RH0,      ALL,                 COMBO_TERM_SLOW)
