@@ -137,13 +137,6 @@ ZMK_TAP_DANCE(num_dance,
     bindings = <&num_word NUM>, <&sl NUM>;  // reverse this for sticky-num on single tap
 )
 
-// smart-mouse, requires PR #1366
-ZMK_TRI_STATE(smart_mouse,
-    bindings = <&tog MSE>, <&none>, <&tog MSE>;
-    ignored-key-positions = <LT1 LT3 LH0 LH1 RT1 RT2 RT3 RM1 RM2 RM3 RB1 RB3 RH0 RH1 RH2>;
-    ignored-layers = <MSE NAV FN>;
-)
-
 ZMK_TRI_STATE(smart_hand,
     bindings = <&tog HND>, <&none>, <&tog HND>;
     ignored-key-positions = <LEFT_KEYS>;
@@ -287,7 +280,7 @@ ZMK_TAP_DANCE(reset_dance,
 #define PIN_APP     &kp LG(LC(LS(A)))
 #define DSK_MGR     &kp LC(UP)
 #define VOL_DOWN    &hmr LCTRL C_VOL_DN
-#define HND_LYR     &tog_tap HND ESC
+#define HND_LYR_ESC &tog_tap HND ESC
 #define SPACE_NAV   &lt_spc NAV SPACE
 
 ZMK_CONDITIONAL_LAYER(system, FN NUM, SYS)
@@ -298,7 +291,7 @@ ZMK_LAYER(base,
      // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
           WHISPER       &kp Q         &kp W         &kp F         &kp P         &kp B             &kp J         &kp L         &kp U         &kp Y         &kp SEMI      &kp LG(L)
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-          HND_LYR       &hml LGUI A   &hml LALT R   &hml LSHFT S  &hml LCTRL T  &kp G             &kp M         &hmr RCTRL N  &hmr RSHFT E  &hmr RALT I   &hmr RGUI O   &kp SQT
+          HND_LYR_ESC   &hml LGUI A   &hml LALT R   &hml LSHFT S  &hml LCTRL T  &kp G             &kp M         &hmr RCTRL N  &hmr RSHFT E  &hmr RALT I   &hmr RGUI O   &kp SQT
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
           &reset_dance  &kp Z         &kp X         &kp C         &kp D         &kp V             &kp K         &kp H         &comma_morph  &dot_morph    &qexcl        ___
      // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
@@ -328,6 +321,7 @@ ZMK_LAYER(nav,
      // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                                     ___           ___           ___               ___           ___           CANCEL
      //                                           ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
+
 )
 
 
@@ -399,6 +393,6 @@ ZMK_LAYER(mouse,
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
           ___           ___           ___           ___           ___           ___               ___           U_WH_L        ___           U_WH_R       ___           ___
      // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                                    &tog MSE      ___           ___               &mkp MCLK     &mkp LCLK     &mkp RCLK
+                                                    &to BSE      ___           ___               &mkp MCLK     &mkp LCLK     &mkp RCLK
      //                                           ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
 )

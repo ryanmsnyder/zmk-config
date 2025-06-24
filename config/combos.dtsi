@@ -23,7 +23,7 @@
 /* Horizontal combos - left hand */
 ZMK_COMBO(esc,        &kp ESC,         LT3 LT2,       BSE NAV NUM HND NV2, COMBO_TERM_FAST)
 ZMK_COMBO(undo,       &undo_redo,      LT2 LT1,       BSE NAV NUM HND NV2, COMBO_TERM_FAST)
-ZMK_COMBO(mouse,      &smart_mouse,    LT3 LT1,       BSE NAV NUM,         COMBO_TERM_FAST)
+ZMK_COMBO(mouse_tog,  &tog MSE,        LT3 LT1,       BSE NAV NUM MSE,     COMBO_TERM_FAST)
 
 ZMK_COMBO(cmd_shft,   &kp LG(LSHFT),   LM0 LM1,       BSE NAV NUM          COMBO_TERM_FAST)
 ZMK_COMBO(tab,        HRC_TAB,         LM3 LM2,       BSE NAV NUM HND NV2, COMBO_TERM_FAST)
